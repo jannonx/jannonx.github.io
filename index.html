@@ -1,10 +1,23 @@
 <!doctype html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script language="javascript" type="application/javascript">
+    function searchWd() {
+        //获取输入的值
+        var url = "www.baidu.com/s?wd="
+        var word = document.getElementById("searchText").value;
+        window.location.href = url + word;
+    }
+    </script>
 </head>
+
 <body>
- <input type="text" name="wd" id="searchText" placeholder="请输入搜索内容" autocomplete="off" >
- <button class="searchBtn">百度</button>
+    <form name="searchForm">
+        <input type="text" name="wd" id="searchText" placeholder="请输入搜索内容" autocomplete="off">
+        <button class="searchBtn" onclick="searchWd()">百度</button>
+    </form>
 </body>
+
 </html>

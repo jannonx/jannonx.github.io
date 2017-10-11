@@ -1,23 +1,73 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script language="javascript" type="application/javascript">
-    function searchWd() {
-        //获取输入的值
-        var url = "www.baidu.com/s?wd="
-        var word = document.getElementById("searchText").value;
-        window.location.href = url + word;
-    }
-    </script>
+    <meta charset="UTF-8">
+    <title>跳转到baidu.com</title>
 </head>
+<style>
+.load_box {
+    border: 1px solid #333;
+    width: 400px;
+    height: 20px;
+    margin: 100px auto;
+}
+
+.load {
+    height: 20px;
+    width: 0%;
+    background-color: blue;
+}
+
+#percent #searchBtn #searcgText{
+    position: absolute;
+    top: 110px;
+    left: 49%;
+}
+
+</style>
+<script language="javascript" type="text/javascript">
+var bar = 0;
+function count() {
+    // bar = bar + 1;
+    // barp = bar + '%';
+    // document.getElementById("load_id").style.width = barp;
+    // document.getElementById("percent").innerText = barp;
+    var word=document.getElementById("searcgText").value;
+
+    // if (bar < 100) {
+    //     setTimeout("count()", 100);
+    // } else {
+        window.location = "http://www.baidu.com/s?wd="+word;
+    // }
+}
+</script>
 
 <body>
-    <form name="searchForm">
-        <input type="text" name="wd" id="searchText" placeholder="请输入搜索内容" autocomplete="off">
-        <button class="searchBtn" onclick="searchWd()">百度</button>
-    </form>
+    <div name="load_box_n" class="load_box">
+        <div id="load_id" class="load">
+        </div>
+    </div>
+    <p id="percent"></p>
+	<input type="text" name="wd" id="searcgText" placeholder="请输入搜索内容">
+    <button id="searchBtn" onclick="count()">链接跳转</button>
+    <!--  <script language="javascript">
+    var bar = 0;
+    count();
+
+    function count() {
+        bar = bar + 1;
+        barp = bar + '%';
+        document.getElementById("load_id").style.width = barp;
+        document.getElementById("percent").innerText = barp;
+
+        if (bar < 100) {
+            setTimeout("count()", 100);
+        } else {
+            window.location = "http://www.baidu.com/";
+        }
+    }
+    </script> -->
 </body>
 
 </html>

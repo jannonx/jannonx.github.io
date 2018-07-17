@@ -53,41 +53,47 @@
 
                 return false;
 
+            } else  if($FwCode.val().length ==15){
+                $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
+
+                $FwCode.focus();
+
+                return false;
             }
 
 
 
-            $CheckResult.html("正在查询......");
+            // $CheckResult.html("正在查询......");
 
-            $(this).attr("disabled", true);
+            // $(this).attr("disabled", true);
 
-            var $strurl = "";
-
-
-            $.getJSON(
-
-                "http://www.gzxb315.com/fwweb/fwipjson.asp?callback=?", "",
-
-                function(data2) {
-
-                    $strurl = data2.fwip;
+            // var $strurl = "";
 
 
-                    $.getJSON(
+            // $.getJSON(
 
-                        $strurl + "/fwqueryjson.asp?callback=?", { FwCode: $FwCode.val() },
+            //     "http://www.gzxb315.com/fwweb/fwipjson.asp?callback=?", "",
 
-                        function(data) {
+            //     function(data2) {
 
-                            //      alert(data.QueryResult);
-                            $CheckResult.html(data.QueryResult);
-                            setTimeout(btnEnabled, 2000);
-
-                        });
+            //         $strurl = data2.fwip;
 
 
-                }
-            );
+            //         $.getJSON(
+
+            //             $strurl + "/fwqueryjson.asp?callback=?", { FwCode: $FwCode.val() },
+
+            //             function(data) {
+
+            //                 //      alert(data.QueryResult);
+            //                 $CheckResult.html(data.QueryResult);
+            //                 setTimeout(btnEnabled, 2000);
+
+            //             });
+
+
+            //     }
+            // );
 
 
 
@@ -378,7 +384,6 @@
             <div class="d4"></div>
         </div>
         </div>
-
     </form>
 </body>
 

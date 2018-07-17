@@ -1,362 +1,385 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-<title>中国315商品信息数码防伪验证中心</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script language="javascript" type="text/javascript" src="http://libs.baidu.com/jquery/1.4.2/jquery.min.js"></script>
+    <title>商品信息数码防伪验证中心</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script language="javascript" type="text/javascript" src="http://libs.baidu.com/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+        $("#btnQuery").click(function() {
 
-<script type="text/javascript" language="javascript">
-        $(document).ready(function() {
-            $("#btnQuery").click(function() {
+            var $FwCode = $("#FwCode");
 
-                var $FwCode = $("#FwCode");
+            var $CheckResult = $("#ReturnResult");
 
-                var $CheckResult = $("#ReturnResult");
-
-                var RegNumber = /^[0-9]*[1-9][0-9]*$/;
-                var flag = false;
-
-
-
-                $CheckResult.html("");
-
-
-                if ($FwCode.val().length == 0) {
-
-                    $CheckResult.html("防伪码不能为空");
-
-                    $FwCode.focus();
-
-                    return false;
-
-                }
-
-                else if ($FwCode.val().length < 10) {
-
-                   $CheckResult.html("防伪码长度不能少于10位");
-		 
-                    $FwCode.focus();
-
-                    return false;
-
-                }
-
-                else if ($FwCode.val().length > 24) {
-
-                    $CheckResult.html("防伪码长度不能大于24位");
-
-                    $FwCode.focus();
-
-                    return false;
-
-                }
-
-                else if (!RegNumber.test($FwCode.val())) {
-
-                   $CheckResult.html("您输入的防伪码不是数字");
-  
-                    $FwCode.focus();
-
-                    return false;
-
-                }
-
-            
-				
-                $CheckResult.html("正在查询......");
-
-                $(this).attr("disabled", true);
-
-                var $strurl="" ;
-           
-
-                    $.getJSON(
-
-                    "http://www.gzxb315.com/fwweb/fwipjson.asp?callback=?","",
-	
-                    function(data2) {
-					
-                       $strurl = data2.fwip ;
-
-
-                   $.getJSON(
-
-                     $strurl + "/fwqueryjson.asp?callback=?",
-                    { FwCode: $FwCode.val() },
-
-                    function(data) {
-
-                  //      alert(data.QueryResult);
-                        $CheckResult.html(data.QueryResult);
-                        setTimeout(btnEnabled, 2000);
-
-                    });
-
-	
-                    }
-                      );
-
- 
-
-
-            });
+            var RegNumber = /^[0-9]*[1-9][0-9]*$/;
+            var flag = false;
 
 
 
-            function btnEnabled() {
+            $CheckResult.html("");
 
-                $("#btnQuery").attr("disabled", false);
+
+            if ($FwCode.val().length == 0) {
+
+                $CheckResult.html("防伪码不能为空");
+
+                $FwCode.focus();
+
+                return false;
+
+            } else if ($FwCode.val().length < 10) {
+
+                $CheckResult.html("防伪码长度不能少于10位");
+
+                $FwCode.focus();
+
+                return false;
+
+            } else if ($FwCode.val().length > 24) {
+
+                $CheckResult.html("防伪码长度不能大于24位");
+
+                $FwCode.focus();
+
+                return false;
+
+            } else if (!RegNumber.test($FwCode.val())) {
+
+                $CheckResult.html("您输入的防伪码不是数字");
+
+                $FwCode.focus();
+
+                return false;
 
             }
 
 
+
+            $CheckResult.html("正在查询......");
+
+            $(this).attr("disabled", true);
+
+            var $strurl = "";
+
+
+            $.getJSON(
+
+                "http://www.gzxb315.com/fwweb/fwipjson.asp?callback=?", "",
+
+                function(data2) {
+
+                    $strurl = data2.fwip;
+
+
+                    $.getJSON(
+
+                        $strurl + "/fwqueryjson.asp?callback=?", { FwCode: $FwCode.val() },
+
+                        function(data) {
+
+                            //      alert(data.QueryResult);
+                            $CheckResult.html(data.QueryResult);
+                            setTimeout(btnEnabled, 2000);
+
+                        });
+
+
+                }
+            );
+
+
+
+
         });
 
+
+
+        function btnEnabled() {
+
+            $("#btnQuery").attr("disabled", false);
+
+        }
+
+
+    });
     </script>
     <style type="text/css">
-body{
-	background:#fff;
-	margin: 0;
-	padding:0;
-	background-color: #CCC;
-	background-image: url(images/beijing.png);
-}
-.main{
- width:900px; margin-left:auto; margin-right:auto; text-align:center; background-image:url('images/bgjbdds.png'); background-repeat:repeat-x; background-color:#fff;
-}
-DIV{
-   font-family:微软雅黑; margin:0; padding:0; font-size:12px; list-style-type:none;
-}
-.logo{
- text-align:center;
-}
-.tab{
- text-align:center;
- }  
- .span{
-	font-size:30px;
-	font-weight:400;
-	margin:0;
-	font-family: "微软雅黑";
- }
- .spanem{
-	font-size:19px;
-	color:#9b9a9a;
-	margin:0;
-	font-family: "微软雅黑";
- }
- .p1{
-  color:#007ce9; font-size:14pt;margin:0;
- }  
-.p2{
-	color:#333333;
-	font-size:16px;
-	font-weight:400;
-	margin:0;
-	font-family: "微软雅黑";
-}
-.p2 img{
- width:30px;
-}
-.d1{
-	background-image:url('images/ee.png');
-	background-repeat: no-repeat;
-	width:850px;
-	height:160px;
-	margin-left:25px;
-	margin-right:auto;
-	
-}
-.d1_1{
-	padding-top:50px;
-	margin-left:185px;
-	float:left;
-}
-.inp{
-	width:300px;
-	height:40px;
-	font-size:14pt;
-	color:#737171;
-	border:0;
-}
-.but{
- width:50px; height:40px; font-size:12pt;
-}
-.btnQuery{
-	width:100px;
-	height:40px;
-}
-.d2{
-	text-align:center;
-	margin-top: 15px;
-	
-	}
-.d2_1{
-	font-size:16px;
-	margin-top: 35px;
-	font-family: "微软雅黑";
-}
-.d2_2{
-	width:830px;
-	height:100px;
-	margin-left:25px;
-	border:dashed 1px #333;
-	margin-right: auto;
-}
-	
-.d3{
- background-image:url('images/cxtis.png'); width:870px; height:206px; margin-left:15px; margin-right:auto;
- margin-top:15px; 
-}
-.d3_1{
-	float:left;
-	width:720px;
-	text-align:left;
-	font-family: "微软雅黑";
-	margin-top: 45px;
-	margin-right: 30px;
-	margin-bottom: 30px;
-	margin-left: 90px;
-	font-size:15px;
-	text-decoration: none;
-}
-.d3_1 p{
-	margin:0px;
-	font-size:15px;
-	color:#333333;
-	font-family: "微软雅黑";
-	text-decoration: none;
-}
-.d4{
-	height:10px;
-	width:100%;
-}
-.d5{
-	background-image:url('images/315841.png');
-	background-repeat:repeat-x;
-	height:134px;
-	width:900px;
-	text-align:left;
-}
-.d5_1{
-	width:128px;
-	height:120px;
-	float:left;
-}
-.d5_1 img{
-	height:120px;
-}
-.d5_2{
-	width:640px;
-	height:150px;
-	float:left;
-	text-align:center;
-	margin-left: 130px;
-	font-family: "微软雅黑";
-	font-size: 15px;
-}
-.d5_3{
-	width:128px;
-	height:120px;
-	float:left;
-}
-.d5_4{
-	width:100%;
-	height:20px;	
-}
-.d5_3 img{
-}
-.d5_2_1{
-	margin-top:30px;
-	font-size: 15px;
-}
-.d5_2_1 a{
- color:#3078be; font-weight:bold;text-decoration:none ;
-}
-.d5_2_2{
-	margin:5px 0px 10px 0px;
-	font-size: 15px;
-}
-.d5_2_2 a{
- color:#3078be;font-weight:bold; text-decoration:none ;
-}
-.d5_2_3{
-	font-size:12px;
-	font-weight:bold;
-	color:#333333;
-	font-family: "微软雅黑";
-}
+    body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        background-color: #CCC;
+        background-image: url(images/beijing.png);
+    }
 
-.d6{
-	height:120px; width:100%;
-}
+    .main {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        background-image: url('images/bgjbdds.png');
+        background-repeat: repeat-x;
+        background-color: #fff;
+    }
+
+    DIV {
+        font-family: 微软雅黑;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        list-style-type: none;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    .tab {
+        text-align: center;
+    }
+
+    .span {
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+
+    .spanem {
+        font-size: 19px;
+        color: #9b9a9a;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+
+    .p1 {
+        color: #007ce9;
+        font-size: 14pt;
+        margin: 0;
+    }
+
+    .p2 {
+        color: #333333;
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+
+    .p2 img {
+        width: 30px;
+    }
+
+    .d1 {
+        background-image: url('images/ee.png');
+        background-repeat: no-repeat;
+        width: 850px;
+        height: 160px;
+        margin-left: 25px;
+        margin-right: auto;
+    }
+
+    .d1_1 {
+        padding-top: 50px;
+        margin-left: 185px;
+        float: left;
+    }
+
+    .inp {
+        width: 300px;
+        height: 40px;
+        font-size: 14pt;
+        color: #737171;
+        border: 0;
+    }
+
+    .but {
+        width: 50px;
+        height: 40px;
+        font-size: 12pt;
+    }
+
+    .btnQuery {
+        width: 100px;
+        height: 40px;
+    }
+
+    .d2 {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .d2_1 {
+        font-size: 16px;
+        margin-top: 35px;
+        font-family: "微软雅黑";
+    }
+
+    .d2_2 {
+        width: 830px;
+        height: 100px;
+        margin-left: 25px;
+        border: dashed 1px #333;
+        margin-right: auto;
+    }
+
+    .d3 {
+        background-image: url('images/cxtis.png');
+        width: 870px;
+        height: 206px;
+        margin-left: 15px;
+        margin-right: auto;
+        margin-top: 15px;
+    }
+
+    .d3_1 {
+        float: left;
+        width: 720px;
+        text-align: left;
+        font-family: "微软雅黑";
+        margin-top: 45px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        margin-left: 90px;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .d3_1 p {
+        margin: 0px;
+        font-size: 15px;
+        color: #333333;
+        font-family: "微软雅黑";
+        text-decoration: none;
+    }
+
+    .d4 {
+        height: 10px;
+        width: 100%;
+    }
+
+    .d5 {
+        background-image: url('images/315841.png');
+        background-repeat: repeat-x;
+        height: 134px;
+        width: 900px;
+        text-align: left;
+    }
+
+    .d5_1 {
+        width: 128px;
+        height: 120px;
+        float: left;
+    }
+
+    .d5_1 img {
+        height: 120px;
+    }
+
+    .d5_2 {
+        width: 640px;
+        height: 150px;
+        float: left;
+        text-align: center;
+        margin-left: 130px;
+        font-family: "微软雅黑";
+        font-size: 15px;
+    }
+
+    .d5_3 {
+        width: 128px;
+        height: 120px;
+        float: left;
+    }
+
+    .d5_4 {
+        width: 100%;
+        height: 20px;
+    }
+
+    .d5_3 img {}
+
+    .d5_2_1 {
+        margin-top: 30px;
+        font-size: 15px;
+    }
+
+    .d5_2_1 a {
+        color: #3078be;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .d5_2_2 {
+        margin: 5px 0px 10px 0px;
+        font-size: 15px;
+    }
+
+    .d5_2_2 a {
+        color: #3078be;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .d5_2_3 {
+        font-size: 12px;
+        font-weight: bold;
+        color: #333333;
+        font-family: "微软雅黑";
+    }
+
+    .d6 {
+        height: 120px;
+        width: 100%;
+    }
     </style>
 </head>
-<body> 
-       <form id="form1" runat="server">
-       <div class="main">
-       <div class="tab">
-        <p class="spanem">&nbsp;</p>
-     </div>
-      <div class="logo">
-     <img src="images/logo.png" alt="logo" align="absmiddle" style="height:150px" /></div>
-       
-        <div class="tab">
-        <p class="span">中国315商品信息数码防伪验证中心</p>
-        <p class="spanem">China 315 commodity information Verification center</p>
-        <p class="spanem">&nbsp;</p>
-        </div>
-           <div class="tab">
-        </div>
-        
-        <div class="d1">
-       <div class="p2"><img src="images/01.png" alt="01" align="absmiddle"/>&nbsp; 刮开涂层取防伪码&nbsp; >&nbsp; <img src="images/02.png" alt="02" align="absmiddle"/>&nbsp; 输入防伪码&nbsp; >&nbsp; <img src="images/03.png" alt="03" align="absmiddle"/>&nbsp; 点击验证&nbsp; >&nbsp; <img src="images/04.png" alt="04" align="absmiddle"/>&nbsp; 显示查询结果</div>
-       
-       
-        <div class="d1_1">
-<input type="text" class="inp" name="FwCode" id="FwCode" maxlength="50" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="button" name="btnQuery" id="btnQuery" class="btnQuery" value="进入查询"  style="width:100px;height:38px;text-align:center;color:#1679a3" /> 
-      <div style=" padding-left:0px; padding-top:15px; color:#FFF">查询提示：请从左至右依次输入标签上的防伪码，然后点击“进入查询”按钮，验证数字信息   </div>          
-        </div>
-        
-        </div>
-        <div class="d2">
-        <div class="d2_2">
-        <div id="ReturnResult" class="d2_1">查询结果显示区</div></div>
-        </div>
-        <div class="d3">
-        <div class="d3_1">
-        <p>请刮开你所购买商品上的防伪标识，在本页查询验证码框里输入防伪码。</p>
-        <p>请确保输入的防伪码正确无误，在输入防伪码后，点击进入查询，即可识别产品真伪。</p>
-        <p>如果您输入的防伪码正确无误，则查询系统提示：你所购买的产品是正品，并显示相关产品信息。</p>
-        <p>如果您输入的防伪码已经被查询过，则查询系统提示：该防伪码已被查询过几次，并显示上次查询时间。</p>
-        <p>如果您输入的防伪码在数据库里不存在或已被过期删除，则查询系统提示：该防伪码不存在，请谨防假冒。</p>
-        <p>免费声明：本系统仅能验证产品所属生产厂商或服务商，商品售后服务请直接联系您的销售商，请知悉。</p>
-        </div>
-        </div>
-        
-        <div class="d4"></div>
-        
-        </div>
-          
-        
-        </div>
-     <div   style="background-color:#c3c3c3; margin-top:10px ">
-      <center>  <div class="d5" >
 
-        <div class="d5_2">
-        <div class="d5_2_1"><a href="http://www.315.gov.cn/">中国消费者权益保护网</a>&nbsp; |&nbsp; <a href="http://www.saic.gov.cn/">国家工商行政管理总局</a>&nbsp; |&nbsp; <a href="http://www.aqsiq.gov.cn/">国家质量监督检验检疫总局</a></div>
-        <div class="d5_2_2"><a  href="http://www.sda.gov.cn/">国家食品药品监督管理总局</a>&nbsp; |&nbsp; <a  href="http://www.cnca.gov.cn/cnca/">国家认证可监督管理委员会</a></div>
-        <div class="d5_2_3">
-          <p>版权所有：Copyright 2013 www.china-315.org.cn  中国315数码防伪验证                    粤ICP备10084517号-2 </p>
-         
-</div>
-        
+<body>
+    <form id="form1" runat="server">
+        <div class="main">
+            <div class="tab">
+                <p class="spanem">&nbsp;</p>
+            </div>
+            <div class="logo">
+                <img src="images/logo.png" alt="logo" align="absmiddle" style="height:150px" /></div>
+            <div class="tab">
+                <p class="span">商品信息数码防伪验证中心</p>
+                <p class="spanem">Product Information Digital Security Verification Center</p>
+                <p class="spanem">&nbsp;</p>
+            </div>
+            <div class="tab">
+            </div>
+            <div class="d1">
+                <div class="p2"><img src="images/01.png" alt="01" align="absmiddle" />&nbsp; 刮开涂层取防伪码&nbsp; >&nbsp; <img src="images/02.png" alt="02" align="absmiddle" />&nbsp; 输入防伪码&nbsp; >&nbsp; <img src="images/03.png" alt="03" align="absmiddle" />&nbsp; 点击验证&nbsp; >&nbsp; <img src="images/04.png" alt="04" align="absmiddle" />&nbsp; 显示查询结果</div>
+                <div class="d1_1">
+                    <input type="text" class="inp" name="FwCode" id="FwCode" maxlength="50" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="button" name="btnQuery" id="btnQuery" class="btnQuery" value="进入查询" style="width:100px;height:38px;text-align:center;color:#1679a3" />
+                    <div style=" padding-left:0px; padding-top:15px; color:#FFF">查询提示：请从左至右依次输入标签上的防伪码，然后点击“进入查询”按钮，验证数字信息 </div>
+                </div>
+            </div>
+            <div class="d2">
+                <div class="d2_2">
+                    <div id="ReturnResult" class="d2_1">查询结果显示区</div>
+                </div>
+            </div>
+            <div class="d3">
+                <div class="d3_1">
+                    <p>请刮开你所购买商品上的防伪标识，在本页查询验证码框里输入防伪码。</p>
+                    <p>请确保输入的防伪码正确无误，在输入防伪码后，点击进入查询，即可识别产品真伪。</p>
+                    <p>如果您输入的防伪码正确无误，则查询系统提示：你所购买的产品是正品，并显示相关产品信息。</p>
+                    <p>如果您输入的防伪码已经被查询过，则查询系统提示：该防伪码已被查询过几次，并显示上次查询时间。</p>
+                    <p>如果您输入的防伪码在数据库里不存在或已被过期删除，则查询系统提示：该防伪码不存在，请谨防假冒。</p>
+                    <p>免费声明：本系统仅能验证产品所属生产厂商或服务商，商品售后服务请直接联系您的销售商，请知悉。</p>
+                </div>
+            </div>
+            <div class="d4"></div>
         </div>
-       
-       
-        </div></center></div>
+        </div>
+
     </form>
 </body>
+
 </html>

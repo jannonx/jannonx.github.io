@@ -53,13 +53,19 @@
 
                 return false;
 
-            } else  if($FwCode.val().length ==15){
+            } else  if($FwCode.val().length ==16){
                 $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
 
                 $FwCode.focus();
 
                 return false;
-            }
+            }else{
+			 $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
+
+                $FwCode.focus();
+
+                return false;
+			}
 
 
 

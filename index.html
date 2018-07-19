@@ -9,63 +9,65 @@
     $(document).ready(function() {
         $("#btnQuery").click(function() {
 
-            var $FwCode = $("#FwCode");
+   //          var $FwCode = $("#FwCode");
 
-            var $CheckResult = $("#ReturnResult");
+   //          var $CheckResult = $("#ReturnResult");
 
-            var RegNumber = /^[0-9]*[1-9][0-9]*$/;
-            var flag = false;
-
-
-
-            $CheckResult.html("");
+   //          var RegNumber = /^[0-9]*[1-9][0-9]*$/;
+   //          var flag = false;
 
 
-            if ($FwCode.val().length == 0) {
 
-                $CheckResult.html("防伪码不能为空");
+   //          $CheckResult.html("");
 
-                $FwCode.focus();
 
-                return false;
+   //          if ($FwCode.val().length == 0) {
 
-            } else if ($FwCode.val().length < 10) {
+   //              $CheckResult.html("防伪码不能为空");
 
-                $CheckResult.html("防伪码长度不能少于10位");
+   //              $FwCode.focus();
 
-                $FwCode.focus();
+   //              return false;
 
-                return false;
+   //          } else if ($FwCode.val().length < 10) {
 
-            } else if ($FwCode.val().length > 24) {
+   //              $CheckResult.html("防伪码长度不能少于10位");
 
-                $CheckResult.html("防伪码长度不能大于24位");
+   //              $FwCode.focus();
 
-                $FwCode.focus();
+   //              return false;
 
-                return false;
+   //          } else if ($FwCode.val().length > 24) {
 
-            } else if (!RegNumber.test($FwCode.val())) {
+   //              $CheckResult.html("防伪码长度不能大于24位");
 
-                $CheckResult.html("您输入的防伪码不是数字");
+   //              $FwCode.focus();
 
-                $FwCode.focus();
+   //              return false;
 
-                return false;
+   //          } else if (!RegNumber.test($FwCode.val())) {
 
-            } else  if($FwCode.val().length ==16){
-                $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
+   //              $CheckResult.html("您输入的防伪码不是数字");
 
-                $FwCode.focus();
+   //              $FwCode.focus();
 
-                return false;
-            }else{
-			 $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
+   //              return false;
 
-                $FwCode.focus();
+   //          } else  if($FwCode.val().length ==16){
+   //              $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
 
-                return false;
-			}
+   //              $FwCode.focus();
+
+   //              return false;
+   //          }else{
+			//  $CheckResult.html("防伪码正确！您所查询的产品是正品！请放心使用！");
+
+   //              $FwCode.focus();
+
+   //              return false;
+			// }
+
+            //------------------------------------以上为注释------------------------------------------//
 
 
 

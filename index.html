@@ -1,306 +1,110 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<head runat="server">
-    <title>ÉÌÆ·ĞÅÏ¢ÊıÂë·ÀÎ±ÑéÖ¤ÖĞĞÄ</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script language="javascript" type="text/javascript" src="https://lib.baomitu.com/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" language="javascript">
-    $(document).ready(function() {
-        $("#btnQuery").click(function() {
-   //          var $FwCode = $("#FwCode");
-   //          var $CheckResult = $("#ReturnResult");
-   //          var RegNumber = /^[0-9]*[1-9][0-9]*$/;
-   //          var flag = false;
-   //          $CheckResult.html("");
-   //          if ($FwCode.val().length == 0) {
-   //              $CheckResult.html("·ÀÎ±Âë²»ÄÜÎª¿Õ");
-   //              $FwCode.focus();
-   //              return false;
-   //          } else if ($FwCode.val().length < 10) {
-   //              $CheckResult.html("·ÀÎ±Âë³¤¶È²»ÄÜÉÙÓÚ10Î»");
-   //              $FwCode.focus();
-   //              return false;
-   //          } else if ($FwCode.val().length > 24) {
-   //              $CheckResult.html("·ÀÎ±Âë³¤¶È²»ÄÜ´óÓÚ24Î»");
-   //              $FwCode.focus();
-   //              return false;
-   //          } else if (!RegNumber.test($FwCode.val())) {
-   //              $CheckResult.html("ÄúÊäÈëµÄ·ÀÎ±Âë²»ÊÇÊı×Ö");
-   //              $FwCode.focus();
-   //              return false;
-   //          } else  if($FwCode.val().length ==16){
-   //              $CheckResult.html("·ÀÎ±ÂëÕıÈ·£¡ÄúËù²éÑ¯µÄ²úÆ·ÊÇÕıÆ·£¡Çë·ÅĞÄÊ¹ÓÃ£¡");
-   //              $FwCode.focus();
-   //              return false;
-   //          }else{
-			//  $CheckResult.html("·ÀÎ±ÂëÕıÈ·£¡ÄúËù²éÑ¯µÄ²úÆ·ÊÇÕıÆ·£¡Çë·ÅĞÄÊ¹ÓÃ£¡");
-   //              $FwCode.focus();
-   //              return false;
-			// }
-            //------------------------------------ÒÔÉÏÎª×¢ÊÍ------------------------------------------//
-            // $CheckResult.html("ÕıÔÚ²éÑ¯......");
-            // $(this).attr("disabled", true);
-            // var $strurl = "";
-            // $.getJSON(
-            //     "http://www.gzxb315.com/fwweb/fwipjson.asp?callback=?", "",
-            //     function(data2) {
-            //         $strurl = data2.fwip;
-            //         $.getJSON(
-            //             $strurl + "/fwqueryjson.asp?callback=?", { FwCode: $FwCode.val() },
-            //             function(data) {
-            //                 //      alert(data.QueryResult);
-            //                 $CheckResult.html(data.QueryResult);
-            //                 setTimeout(btnEnabled, 2000);
-            //             });
-            //     }
-            // );
-        });
-        function btnEnabled() {
-            $("#btnQuery").attr("disabled", false);
-        }
-    });
-    </script>
-    <style type="text/css">
-    body {
-        background: #fff;
-        margin: 0;
-        padding: 0;
-        background-color: #CCC;
-        background-image: url(images/beijing.png);
-    }
-    .main {
-        width: 900px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        background-image: url('images/bgjbdds.png');
-        background-repeat: repeat-x;
-        background-color: #fff;
-    }
-    DIV {
-        font-family: Î¢ÈíÑÅºÚ;
-        margin: 0;
-        padding: 0;
-        font-size: 12px;
-        list-style-type: none;
-    }
-    .logo {
-        text-align: center;
-    }
-    .tab {
-        text-align: center;
-    }
-    .span {
-        font-size: 30px;
-        font-weight: 400;
-        margin: 0;
-        font-family: "Î¢ÈíÑÅºÚ";
-    }
-    .spanem {
-        font-size: 19px;
-        color: #9b9a9a;
-        margin: 0;
-        font-family: "Î¢ÈíÑÅºÚ";
-    }
-    .p1 {
-        color: #007ce9;
-        font-size: 14pt;
-        margin: 0;
-    }
-    .p2 {
-        color: #333333;
-        font-size: 16px;
-        font-weight: 400;
-        margin: 0;
-        font-family: "Î¢ÈíÑÅºÚ";
-    }
-    .p2 img {
-        width: 30px;
-    }
-    .d1 {
-        background-image: url('images/ee.png');
-        background-repeat: no-repeat;
-        width: 850px;
-        height: 160px;
-        margin-left: 25px;
-        margin-right: auto;
-    }
-    .d1_1 {
-        padding-top: 50px;
-        margin-left: 185px;
-        float: left;
-    }
-    .inp {
-        width: 300px;
-        height: 40px;
-        font-size: 14pt;
-        color: #737171;
-        border: 0;
-    }
-    .but {
-        width: 50px;
-        height: 40px;
-        font-size: 12pt;
-    }
-    .btnQuery {
-        width: 100px;
-        height: 40px;
-    }
-    .d2 {
-        text-align: center;
-        margin-top: 15px;
-    }
-    .d2_1 {
-        font-size: 16px;
-        margin-top: 35px;
-        font-family: "Î¢ÈíÑÅºÚ";
-    }
-    .d2_2 {
-        width: 830px;
-        height: 100px;
-        margin-left: 25px;
-        border: dashed 1px #333;
-        margin-right: auto;
-    }
-    .d3 {
-        background-image: url('images/cxtis.png');
-        width: 870px;
-        height: 206px;
-        margin-left: 15px;
-        margin-right: auto;
-        margin-top: 15px;
-    }
-    .d3_1 {
-        float: left;
-        width: 720px;
-        text-align: left;
-        font-family: "Î¢ÈíÑÅºÚ";
-        margin-top: 45px;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        margin-left: 90px;
-        font-size: 15px;
-        text-decoration: none;
-    }
-    .d3_1 p {
-        margin: 0px;
-        font-size: 15px;
-        color: #333333;
-        font-family: "Î¢ÈíÑÅºÚ";
-        text-decoration: none;
-    }
-    .d4 {
-        height: 10px;
-        width: 100%;
-    }
-    .d5 {
-        background-image: url('images/315841.png');
-        background-repeat: repeat-x;
-        height: 134px;
-        width: 900px;
-        text-align: left;
-    }
-    .d5_1 {
-        width: 128px;
-        height: 120px;
-        float: left;
-    }
-    .d5_1 img {
-        height: 120px;
-    }
-    .d5_2 {
-        width: 640px;
-        height: 150px;
-        float: left;
-        text-align: center;
-        margin-left: 130px;
-        font-family: "Î¢ÈíÑÅºÚ";
-        font-size: 15px;
-    }
-    .d5_3 {
-        width: 128px;
-        height: 120px;
-        float: left;
-    }
-    .d5_4 {
-        width: 100%;
-        height: 20px;
-    }
-    .d5_3 img {}
-    .d5_2_1 {
-        margin-top: 30px;
-        font-size: 15px;
-    }
-    .d5_2_1 a {
-        color: #3078be;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .d5_2_2 {
-        margin: 5px 0px 10px 0px;
-        font-size: 15px;
-    }
-    .d5_2_2 a {
-        color: #3078be;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    .d5_2_3 {
-        font-size: 12px;
-        font-weight: bold;
-        color: #333333;
-        font-family: "Î¢ÈíÑÅºÚ";
-    }
-    .d6 {
-        height: 120px;
-        width: 100%;
-    }
-    </style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Leveå¯¼èˆªä¸­å¿ƒ</title>
+<style type="text/css">
+<!--
+.STYLE1 {
+	font-family: "å®‹ä½“";
+	font-size: 18px;
+}
+body {
+	background-color: #FFFF99;
+}
+.STYLE2 {font-size: xx-large}
+#Layer1 {
+	position:absolute;
+	width:142px;
+	height:44px;
+	z-index:1;
+	left: 124px;
+	top: 125px;
+}
+#Layer2 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:2;
+}
+#Layer3 {
+	position:absolute;
+	width:352px;
+	height:59px;
+	z-index:1;
+	left: 819px;
+	top: 634px;
+}
+.STYLE5 {font-size: 24px}
+#Layer4 {
+	position:absolute;
+	width:225px;
+	height:48px;
+	z-index:2;
+	left: 505px;
+	top: 637px;
+}
+-->
+</style>
 </head>
 
 <body>
-    <form id="form1" runat="server">
-        <div class="main">
-            <div class="tab">
-                <p class="spanem">&nbsp;</p>
-            </div>
-            <div class="logo">
-                <img src="images/logo.png" alt="logo" align="absmiddle" style="height:150px" /></div>
-            <div class="tab">
-                <p class="span">ÉÌÆ·ĞÅÏ¢ÊıÂë·ÀÎ±ÑéÖ¤ÖĞĞÄ</p>
-                <p class="spanem">Product Information Digital Security Verification Center</p>
-                <p class="spanem">&nbsp;</p>
-            </div>
-            <div class="tab">
-            </div>
-            <div class="d1">
-                <div class="p2"><img src="images/01.png" alt="01" align="absmiddle" />&nbsp; ¹Î¿ªÍ¿²ãÈ¡·ÀÎ±Âë&nbsp; >&nbsp; <img src="images/02.png" alt="02" align="absmiddle" />&nbsp; ÊäÈë·ÀÎ±Âë&nbsp; >&nbsp; <img src="images/03.png" alt="03" align="absmiddle" />&nbsp; µã»÷ÑéÖ¤&nbsp; >&nbsp; <img src="images/04.png" alt="04" align="absmiddle" />&nbsp; ÏÔÊ¾²éÑ¯½á¹û</div>
-                <div class="d1_1">
-                    <input type="text" class="inp" name="FwCode" id="FwCode" maxlength="50" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="button" name="btnQuery" id="btnQuery" class="btnQuery" value="½øÈë²éÑ¯" style="width:100px;height:38px;text-align:center;color:#1679a3" />
-                    <div style=" padding-left:0px; padding-top:15px; color:#FFF">²éÑ¯ÌáÊ¾£ºÇë´Ó×óÖÁÓÒÒÀ´ÎÊäÈë±êÇ©ÉÏµÄ·ÀÎ±Âë£¬È»ºóµã»÷¡°½øÈë²éÑ¯¡±°´Å¥£¬ÑéÖ¤Êı×ÖĞÅÏ¢ </div>
-                </div>
-            </div>
-            <div class="d2">
-                <div class="d2_2">
-                    <div id="ReturnResult" class="d2_1">²éÑ¯½á¹ûÏÔÊ¾Çø</div>
-                </div>
-            </div>
-            <div class="d3">
-                <div class="d3_1">
-                    <p>Çë¹Î¿ªÄãËù¹ºÂòÉÌÆ·ÉÏµÄ·ÀÎ±±êÊ¶£¬ÔÚ±¾Ò³²éÑ¯ÑéÖ¤Âë¿òÀïÊäÈë·ÀÎ±Âë¡£</p>
-                    <p>ÇëÈ·±£ÊäÈëµÄ·ÀÎ±ÂëÕıÈ·ÎŞÎó£¬ÔÚÊäÈë·ÀÎ±Âëºó£¬µã»÷½øÈë²éÑ¯£¬¼´¿ÉÊ¶±ğ²úÆ·ÕæÎ±¡£</p>
-                    <p>Èç¹ûÄúÊäÈëµÄ·ÀÎ±ÂëÕıÈ·ÎŞÎó£¬Ôò²éÑ¯ÏµÍ³ÌáÊ¾£ºÄãËù¹ºÂòµÄ²úÆ·ÊÇÕıÆ·£¬²¢ÏÔÊ¾Ïà¹Ø²úÆ·ĞÅÏ¢¡£</p>
-                    <p>Èç¹ûÄúÊäÈëµÄ·ÀÎ±ÂëÒÑ¾­±»²éÑ¯¹ı£¬Ôò²éÑ¯ÏµÍ³ÌáÊ¾£º¸Ã·ÀÎ±ÂëÒÑ±»²éÑ¯¹ı¼¸´Î£¬²¢ÏÔÊ¾ÉÏ´Î²éÑ¯Ê±¼ä¡£</p>
-                    <p>Èç¹ûÄúÊäÈëµÄ·ÀÎ±ÂëÔÚÊı¾İ¿âÀï²»´æÔÚ»òÒÑ±»¹ıÆÚÉ¾³ı£¬Ôò²éÑ¯ÏµÍ³ÌáÊ¾£º¸Ã·ÀÎ±Âë²»´æÔÚ£¬Çë½÷·À¼ÙÃ°¡£</p>
-                    <p>Ãâ·ÑÉùÃ÷£º±¾ÏµÍ³½öÄÜÑéÖ¤²úÆ·ËùÊôÉú²ú³§ÉÌ»ò·şÎñÉÌ£¬ÉÌÆ·ÊÛºó·şÎñÇëÖ±½ÓÁªÏµÄúµÄÏúÊÛÉÌ£¬ÇëÖªÏ¤¡£</p>
-                </div>
-            </div>
-            <div class="d4"></div>
-        </div>
-        </div>
-    </form>
+<div align="center" class="STYLE1">
+  <p>&nbsp;</p>
+  <h5 class="STYLE2">Leveå¯¼èˆªä¸­å¿ƒ</h5>
+  <p class="STYLE2">&nbsp;</p>
+</div>
+<table width="100%" border="0">
+  <tr>
+    <td><div align="center"><a href="http://192.168.1.80/zentao/user-login-L3plbnRhby8=.html">ç¦…é“å…¥å£</a></div></td>
+    <td><div align="center"><a href="http://192.168.1.31/doc/CommonTools/tomcat7-file.tar">Tomcat7ä¸‹è½½</a></div></td>
+    <td><p align="center"><a href="http://192.168.1.31/doc/CommonTools/">å¸¸ç”¨å·¥å…·ä¸‹è½½</a></p>    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="center"><a href="http://192.168.1.31/doc/CommonTools/SQLyog10.2.zip">Mysqlå®¢æˆ·ç«¯win64</a></div></td>
+    <td><div align="center"><a href="http://192.168.1.31/doc/CommonTools/mongochef-x64.msi.zip">MongoDBå®¢æˆ·ç«¯win64</a></div></td>
+    <td><div align="center"><a href="http://192.168.1.30/SVN.svg">SVNæƒé™åˆ†å¸ƒå›¾</a><a href="http://192.168.1.31/doc/leve/job demand.docx"></a></div></td>
+  </tr>
+  <tr>
+    <td>&nbsp; </td>
+    <td>&nbsp; </td>
+    <td>&nbsp; </td>
+  </tr>
+  <tr>
+    <td><div align="center"><a href="http://192.168.1.31/doc/SvnClient/WIN7 64SVN/TortoiseSVN-1.9.7.27907-x64.msi">SVN-win64å®¢æˆ·ç«¯ä¸‹è½½</a></div></td>
+    <td><div align="center"><a href="http://192.168.1.31/doc/SvnClient/MAC SVN/cornerstone.dmg">SVN-MACå®¢æˆ·ç«¯ä¸‹è½½</a></div></td>
+    <td><div align="center"><a href="http://192.168.1.31/doc/SvnClient/WIN7 32SVN/TortoiseSVN-1.9.7.27907-win32.msi">SVN-win32å®¢æˆ·ç«¯ä¸‹è½½</a></div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="center"><a href="http://192.168.1.37/showdoc/index.php?s=/Home/User/login">Leveåœ¨çº¿æ–‡æ¡£</a></div></td>
+    <td><p align="center"><a href="http://192.168.1.31/doc/office/">åŠå…¬è½¯ä»¶</a></p>    </td>
+	<td><p align="center"><a href="http://192.168.1.76:8088">jiraé¡¹ç›®ç®¡ç†</a></p>    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+    <td><p align="center"><a href="http://192.168.1.76:8090">Confluence</a></p>    </td>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<div class="STYLE5" id="Layer3">å…¬å¸WiFiå¯†ç ï¼šdsj88888888</div>
+<div id="Layer4"> SVNç«¯å£é»˜è®¤ï¼š3390	</div>
 </body>
+
+
 
 </html>

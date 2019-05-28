@@ -2,11 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\css",
+    "\\html",
     "\\images",
     "\\img",
+    "\\img\\main",
     "\\img\\used",
-    "\\js"
+    "\\js",
+    "\\js\\lightbox",
+    "\\js\\lightbox\\themes"
   ],
-  "SelectedNode": "\\used.html",
+  "SelectedNode": "\\css\\aspku.css",
   "PreviewInSolutionExplorer": false
 }
